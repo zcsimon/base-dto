@@ -1,0 +1,18 @@
+stages:
+  - build
+
+variables:
+  PROJECT_COMPANY: zcsimon
+  PROJECT_NAME: base-dto
+  REGISTRY_URL: 
+  USER_PASSWORD:
+  LOCAL_FILE_NAME: ${PROJECT_COMPANY}-${PROJECT_NAME}
+
+build_composer:
+  stage: build
+  script:
+    - PROJECT_VERSION=${PROJECT_VERSION:-`echo ${CI_COMMIT_TAG}`}
+    - composer archive --format=zip --file=${LOCAL_FILE_NAME}-${PROJECT_VERSION}
+    - curl -v -u ${USER_PASSWORD} --upload-file ${LOCAL_FILE_NAME}-${PROJECT_VERSION}.zip ${REGISTRY_URL}/${PROJECT_VERSION}
+  only:
+    - tags

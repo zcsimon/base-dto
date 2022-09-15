@@ -1,0 +1,26 @@
+{
+    "name": "hhflight/base-dto",
+    "type": "library",
+    "description": "",
+    "autoload": {
+        "psr-4": {
+            "Zcsimon\\BaseDto\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">=7.2",
+        "ext-json": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": ">=7.0"
+    },
+    "scripts": {
+        "test": "phpunit -c phpunit.xml --colors=always"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ZcsimonTest\\BaseDto\\": "tests/"
+        }
+    },
+    "extra": []
+}
